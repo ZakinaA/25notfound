@@ -1,0 +1,267 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 26 mars 2025, 22:59:00
+    Author     : liamd
+*/
+
+/* Global reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body {
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Entête */
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Navigation */
+nav {
+    background: #444;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+/* Tableau de données */
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Couleur de fond pour les lignes paires */
+}
+
+tr:nth-child(odd) {
+    background-color: #fff; /* Couleur de fond pour les lignes impaires */
+}
+
+/* Boutons */
+button, .btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+button:hover, .btn:hover {
+    background-color: #45a049;
+}
+
+/* Formulaires */
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input[type="submit"] {
+    width: auto;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    nav {
+        text-align: left;
+    }
+
+    nav a {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+/* Style de la barre de navigation */
+nav {
+    background: #333;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+}
+
+.menu a:hover {
+    background: #555;
+}
+
+/* Style de la liste déroulante */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #444;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 180px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid #555;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    display: block;
+    color: white;
+    text-align: left;
+}
+
+.dropdown-item {
+    color: black !important;
+    background-color: white !important;
+}
+
+.dropdown-menu a:hover {
+    background: #666;
+}
+
+/* Afficher la liste déroulante au survol */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+/* Dark Mode */
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Navbar sombre */
+.dark-mode .navbar {
+    background-color: #1e1e1e !important;
+}
+
+/* Liens en mode sombre */
+.dark-mode .nav-link, 
+.dark-mode .dropdown-menu a {
+    color: white !important;
+}
+
+/* Menu déroulant en mode sombre */
+.dark-mode .dropdown-menu {
+    background-color: #333 !important;
+}
+
+.dark-mode .dropdown-menu a:hover {
+    background-color: #555 !important;
+}

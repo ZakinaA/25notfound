@@ -13,10 +13,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SDIS WEB</title>
+        <link rel="stylesheet" href="../styles/styles.css">
     </head>
     <body>
         <h1>NOUVEAU POMPIER</h1>
-        
+            <jsp:include page="../header/header.jsp" />
             <%
                 FormPompier form = (FormPompier)request.getAttribute("form");
             %>
