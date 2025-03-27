@@ -89,20 +89,59 @@ public class ServletIntervention extends HttpServlet {
            getServletContext().getRequestDispatcher("/vues/intervention/listerInterventions.jsp").forward(request, response);
         }
         
-         // Récup et affichage des clients interessés par une certaine catégorie de ventes
+        
+        if(url.equals("/sdisweb/ServletIntervention/consulter")) {  
+    try {
+        // Vérification que le paramètre existe et n'est pas vide
+        String idInterventionStr = request.getParameter("idIntervention");
+        if (idInterventionStr == null || idInterventionStr.trim().isEmpty()) {
+            throw new IllegalArgumentException("ID de l'intervention manquant dans la requête.");
+        }
+
+        // Conversion en entier
+        int idIntervention = Integer.parseInt(idInterventionStr);
+        System.out.println("Intervention à afficher = " + idIntervention);
+
+        // Récupération de l'intervention depuis la base de données
+        Intervention i = DaoIntervention.getInterventionById(cnx, idIntervention);
+
+        if (i == null) {
+            // Si l'intervention n'existe pas, afficher un message d'erreur
+            request.setAttribute("errorMessage", "Aucune intervention trouvée pour l'ID : " + idIntervention);
+        } else {
+            request.setAttribute("pIntervention", i);
+        }
+
+        // Redirection vers la JSP, même en cas d'erreur (pour afficher un message)
+        getServletContext().getRequestDispatcher("/vues/intervention/consulterIntervention.jsp").forward(request, response);
+
+    } catch (NumberFormatException e) {
+        // Gestion d'une erreur de conversion
+        request.setAttribute("errorMessage", "L'ID de l'intervention doit être un nombre valide.");
+        getServletContext().getRequestDispatcher("/vues/intervention/consulterIntervention.jsp").forward(request, response);
+    } catch (Exception e) {
+        // Gestion d'une autre erreur
+        e.printStackTrace();
+        request.setAttribute("errorMessage", "Une erreur est survenue : " + e.getMessage());
+        getServletContext().getRequestDispatcher("/vues/intervention/consulterIntervention.jsp").forward(request, response);
+    }
+}
+
+        
+        /* // Récup et affichage des clients interessés par une certaine catégorie de ventes
         if(url.equals("/sdisweb/ServletIntervention/consulter"))
         {  
             // tout paramètre récupéré de la request Http est de type String
             // Il est donc nécessaire de caster le paramètre idPompier en int
-            int idPompier = Integer.parseInt((String)request.getParameter("idPompier"));
-            System.out.println( "pompier à afficher = " + idPompier);
-            Pompier p= DaoPompier.getPompierById(cnx, idPompier);
-            request.setAttribute("pPompier", p);
-            getServletContext().getRequestDispatcher("/vues/pompier/consulterPompier.jsp").forward(request, response);       
+            int idIntervention = Integer.parseInt((String)request.getParameter("idIntervention"));
+            System.out.println( "Intervention à afficher = " + idIntervention);
+            Intervention i= DaoIntervention.getInterventionById(cnx, idIntervention);
+            request.setAttribute("pIntervention", i);
+            getServletContext().getRequestDispatcher("/vues/intervention/consulterIntervention.jsp").forward(request, response);       
            
            
         }
-        
+        */
         if(url.equals("/sdisweb/ServletPompier/ajouter"))
         {                   
             ArrayList<Caserne> lesCasernes = DaoCaserne.getLesCasernes(cnx);

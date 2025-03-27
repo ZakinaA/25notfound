@@ -59,7 +59,7 @@ public class DaoIntervention {
         Intervention i = null ;
         try{
             requeteSql = cnx.prepareStatement("select intervention.id as i_id, lieu as i_lieu, date as i_date, heure_appel as i_heure_appel, heure_arrivee as i_heure_arrivee, duree as i_duree " +
-                         " from intervention ");
+                         " from intervention WHERE id = ? ");
             requeteSql.setInt(1, idIntervention);
             resultatRequete = requeteSql.executeQuery();
             

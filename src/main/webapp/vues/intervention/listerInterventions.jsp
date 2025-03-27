@@ -69,6 +69,12 @@
                             out.println("<td><td>");
                             out.println(i.getDuree());
                             out.println("</td>");;
+                            
+                            out.println("<td><a href ='../ServletIntervention/consulter?idIntervention="+ i.getId()+ "'>");
+                            out.println("Consulter");
+                            out.println("</td>");;
+                            
+                            
                                
                         }
    
