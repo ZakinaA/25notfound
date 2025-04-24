@@ -18,11 +18,14 @@
         %>
         <h1>Bienvenue <%  out.println(p.getPrenom());%>  <%  out.println(p.getNom());%></h1>
         <table>
+            <td>Prenom : <%  out.println(p.getPrenom());%> </td>
+            <td>Nom : <%  out.println(p.getNom());%></td>
             <tr>
-                <td>Numero Bip : </td><td>bip bip</td>
+                <td>Numero Bip : </td><td><%  out.println(p.getBip());%></td>
             </tr>
             <tr>
                 <td>Caserne : </td><td><%  out.println(p.getUneCaserne().getNom());%></td>
+                <td></td>
             </tr>
         </table>
     </body>
