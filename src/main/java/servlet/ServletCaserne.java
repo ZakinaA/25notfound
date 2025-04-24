@@ -77,6 +77,8 @@ public class ServletCaserne extends HttpServlet {
             throws ServletException, IOException {
         
          String url = request.getRequestURI();  
+         
+         System.out.println("URL="+url);
        
         // Récup et affichage les eleves 
         if(url.equals("/sdisweb/ServletCaserne/lister"))
@@ -87,20 +89,25 @@ public class ServletCaserne extends HttpServlet {
            getServletContext().getRequestDispatcher("/vues/Caserne/listerCasernes.jsp").forward(request, response);
         }
         
-        /* // Récup et affichage des clients interessés par une certaine catégorie de ventes
-        if(url.equals("/sdisweb/ServletCaserne/consulter"))
+
+   
+         // Récup et affichage des clients interessés par une certaine catégorie de ventes
+        
+         
+         if(url.equals("/sdisweb/ServletCaserne/consulter"))
         {  
             // tout paramètre récupéré de la request Http est de type String
             // Il est donc nécessaire de caster le paramètre idPompier en int
-            int idPompier = Integer.parseInt((String)request.getParameter("idPompier"));
-            System.out.println( "pompier à afficher = " + idPompier);
-            Pompier p= DaoPompier.getPompierById(cnx, idPompier);
-            request.setAttribute("pPompier", p);
-            getServletContext().getRequestDispatcher("/vues/pompier/consulterPompier.jsp").forward(request, response);       
+            int idCaserne = Integer.parseInt((String)request.getParameter("idCaserne"));
+            System.out.println( "caserne à afficher = " + idCaserne);
+            Caserne c= DaoCaserne.getCaserneById(cnx, idCaserne);
+            request.setAttribute("cCaserne", c);
+            getServletContext().getRequestDispatcher("/vues/Caserne/consulterCaserne.jsp").forward(request, response);       
            
-           
+          
         }
         
+        /*
         if(url.equals("/sdisweb/ServletPompier/ajouter"))
         {                   
             ArrayList<Caserne> lesCasernes = DaoCaserne.getLesCasernes(cnx);
@@ -134,7 +141,7 @@ public class ServletCaserne extends HttpServlet {
         request.setAttribute( "form", form );
         request.setAttribute( "pPompier", p );
 		
-        /*if (form.getErreurs().isEmpty()){
+        if (form.getErreurs().isEmpty()){
             Pompier pompierInsere =  DaoPompier.addPompier(cnx, p);
             if (pompierInsere != null ){
                 request.setAttribute( "pPompier", pompierInsere );
@@ -147,6 +154,7 @@ public class ServletCaserne extends HttpServlet {
             }
            
         }
+        /*
         else
         { 
             // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs

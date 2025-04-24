@@ -18,8 +18,9 @@ public class TestDaoCaserne {
       public static void main (String args[]){
         
         Connection cnx = ConnexionBdd.ouvrirConnexion();
-        System.out.println ("nombre de casernes=" + DaoCaserne.getLesCasernes(cnx).size());
-           
+        System.out.println ("nombre de caserne=" + DaoCaserne.getLesCasernes(cnx).size());
+        
+        System.out.println ("id caserne" + DaoCaserne.getCaserneById(cnx,1).getVille());
     }
     
 }

@@ -50,4 +50,36 @@ public class DaoCaserne {
         return lesCasernes;
     }
     
+    public static Caserne getCaserneById(Connection cnx, int idCaserne){
+        
+        Caserne c = null ;
+        try{
+            requeteSql = cnx.prepareStatement("select caserne.id as c_id, nom as c_nom, rue as c_rue, cpos as c_cpos, ville as c_ville from caserne WHERE id = ? ");
+            
+            requeteSql.setInt(1, idCaserne);
+            System.out.println("requete="+requeteSql);
+            resultatRequete = requeteSql.executeQuery();
+            
+            if (resultatRequete.next()){
+                
+                    c = new Caserne();
+                    c.setId(resultatRequete.getInt("c_id"));
+                    c.setNom(resultatRequete.getString("c_nom"));
+                    c.setRue(resultatRequete.getString("c_rue"));
+                    c.setCpos(resultatRequete.getInt("c_cpos"));
+                    c.setVille(resultatRequete.getString("c_ville"));
+                
+                
+                
+                
+            }
+           
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getCaserneById  a généré une erreur");
+        }
+        return c ;
+    }
+    
 }
